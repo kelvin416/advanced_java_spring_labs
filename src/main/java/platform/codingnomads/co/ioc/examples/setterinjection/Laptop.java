@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class Laptop {
     private Processor processor;
     private OS os;
+    private MechanicalKeyBoard mechanicalKeyBoard;
 
     @Autowired
     public void setProcessor(Processor processor) {
@@ -16,6 +17,11 @@ public class Laptop {
     @Autowired
     public void setOs(OS os) {
         this.os = os;
+    }
+
+    @Autowired
+    public void setKeyBoard(MechanicalKeyBoard mechanicalKeyBoard){
+        this.mechanicalKeyBoard = mechanicalKeyBoard;
     }
 
     public String printLaptopConfiguration() {
