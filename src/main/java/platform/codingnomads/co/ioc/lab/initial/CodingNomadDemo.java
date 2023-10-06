@@ -14,5 +14,7 @@ public class CodingNomadDemo {
         CodingNomad codingNomad = ctx.getBean(CodingNomad.class);
         System.out.println();
         System.out.println(codingNomad.createAwesomeSoftware());
+        System.out.println();
+        System.out.println(codingNomad.additionalItems());
     }
 }

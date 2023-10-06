@@ -22,4 +22,14 @@ public class CodingNomadConfiguration {
     public JDK jdk() {
         return JDK.builder().name("OpenJDK").version("11").build();
     }
+
+    @Bean
+    public OperatingSystem operatingSystem(){
+        return OperatingSystem.builder().name("Apple Silicon").version("2018").build();
+    }
+
+    @Bean
+    public KeyBoardType keyBoardType(){
+        return KeyBoardType.builder().name("Butterfly KeyBoard").name("2016").build();
+    }
 }
