@@ -18,4 +18,9 @@ public class IOCDemoConfiguration {
         renderer.setGreetingProvider(provider());
         return renderer;
     }
+
+    @Bean
+    public GoodMorning goodMorning(){
+        return new GoodMorning();
+    }
 }
