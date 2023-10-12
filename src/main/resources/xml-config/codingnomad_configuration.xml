@@ -18,5 +18,9 @@
         <property name="name" value="OpenJDK"/>
         <property name="version" value="11"/>
     </bean>
+    <bean id="docker" class="platform.codingnomads.co.corespring.examples.application_context.xml.Docker">
+        <property name="name" value="Docker Hub"/>
+        <property name="version" value="2024"/>
+    </bean>
 
 </beans>
