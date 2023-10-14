@@ -8,6 +8,7 @@ public class BeanLifeCycleDemo {
         ctx.register(BeanLifeCycleConfig.class);
         ctx.refresh();
         final SpringBean springBean = ctx.getBean(SpringBean.class);
+//        final Computer computer = ctx.getBean(Computer.class);
         ctx.close();
     }
 }
