@@ -3,6 +3,7 @@ package platform.codingnomads.co.corespring.examples.scopeannotaion;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
@@ -17,5 +18,18 @@ public class ScopeAnnotationDemoConfig {
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public PrototypeBean prototypeBean() {
         return new PrototypeBean();
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public SimpleClass1 simpleClass1(){
+        return new SimpleClass1();
+    }
+
+    @Bean
+    @Lazy
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public SimpleClass2 simpleClass2(){
+        return new SimpleClass2();
     }
 }
