@@ -36,8 +36,19 @@ public class Nomad {
     @Value("#{${database.values}}")
     private Map<String, String> databaseValues;
 
+    @Value("${nomad.dob}")
+    private Integer dob;
+    @Value("${nomad.email}")
+    private String email;
+    @Value("${nomad.course}")
+    private String course;
+    @Value("${nomad.location:Kenya}")
+    private String location;
+
     public String nomadIdentity() {
-        return name.concat(" ").concat(age.toString());
+        return name.concat(" ").concat(age.toString()).concat(" date of birth: ")
+                .concat(dob.toString().concat(", email: ").concat(email).concat(", course: ")
+                        .concat(course).concat(", location:").concat(location));
     }
 
     public String getGreeting() {
