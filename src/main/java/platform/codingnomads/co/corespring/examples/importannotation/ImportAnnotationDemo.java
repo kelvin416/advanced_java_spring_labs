@@ -7,8 +7,8 @@ public class ImportAnnotationDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(ImportAnnotationConfig.class);
         ctx.refresh();
-        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         final Framework framework = ctx.getBean(Framework.class);
+        final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         ctx.close();
     }
 }
