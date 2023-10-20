@@ -41,10 +41,15 @@ public class SpringDataJDBCDemo implements CommandLineRunner {
             jdbcTemplate.execute(String.format("INSERT INTO employees(first_name, last_name) VALUES ('%s','%s')", name[0], name[1]));
         }
 
+        String name = jdbcTemplate.queryForObject("SELECT first_name FROM employees WHERE id = 1", String.class);
+        System.out.println("Name is: " + name);
+
         //query the database for Employees with first name Java
         jdbcTemplate.query(
                         "SELECT id, first_name, last_name FROM employees WHERE first_name = 'Java'",
-                        (rs, rowNum) -> new Employee(rs.getLong("id"), rs.getString("first_name"), rs.getString("last_name"))
+                        (rs, rowNum) -> new Employee(rs.getLong("id"),
+                                rs.getString("first_name"),
+                                rs.getString("last_name"))
                 )
                 //print each found employee to the console
                 .forEach(employee -> System.out.println(employee.toString()));
