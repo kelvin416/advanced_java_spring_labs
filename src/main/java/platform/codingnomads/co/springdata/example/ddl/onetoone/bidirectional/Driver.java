@@ -29,4 +29,7 @@ public class Driver {
             cascade = CascadeType.PERSIST
     )
     private Car car;
+
+    @OneToOne
+    private Team team;
 }
