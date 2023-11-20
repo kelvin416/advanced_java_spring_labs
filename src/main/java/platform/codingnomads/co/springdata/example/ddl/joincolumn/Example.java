@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "examples")
@@ -27,4 +28,11 @@ public class Example {
             @JoinColumn(name = "references_name", referencedColumnName = "name")
     })
     private User user;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch =  FetchType.EAGER)
+    @JoinColumns({
+            @JoinColumn(name = "referenced_activity", referencedColumnName = "activity"),
+            @JoinColumn(name = "referenced_likes", referencedColumnName = "likes")
+    })
+    private Set<Comment> comments;
 }
