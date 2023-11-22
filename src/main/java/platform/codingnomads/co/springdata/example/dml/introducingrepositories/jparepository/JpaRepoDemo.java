@@ -23,12 +23,20 @@ public class JpaRepoDemo implements CommandLineRunner {
         SoftDrink fanta = SoftDrink.builder().name("Fanta").rating(10).build();
         SoftDrink coke = SoftDrink.builder().name("Coca-Cola").rating(4).build();
         SoftDrink drPepper = SoftDrink.builder().name("Dr. Pepper").rating(1).build();
+        SoftDrink pepsi = SoftDrink.builder().name("Pepsi").rating(7).build();
+        SoftDrink sevenUp = SoftDrink.builder().name("7-Up").rating(6).build();
+        SoftDrink tonic = SoftDrink.builder().name("Tonic Quater").rating(5).build();
+        SoftDrink lime = SoftDrink.builder().name("Lime juice").rating(7).build();
+        SoftDrink passion = SoftDrink.builder().name("Fanta-Passion").rating(2).build();
 
         //save single entity instance
         fanta = softDrinkRepo.save(fanta);
 
         //save multiple entity instances at a time
         List<SoftDrink> insertedSoftDrinks = softDrinkRepo.saveAll(List.of(coke, drPepper));
+
+        //Saving new entity instances.
+        List<SoftDrink> insertedSoftDrinks2 = softDrinkRepo.saveAll(List.of(pepsi, sevenUp, tonic, lime, passion));
 
         //make sure all entities are actually saved to the database
         softDrinkRepo.flush();
@@ -37,6 +45,12 @@ public class JpaRepoDemo implements CommandLineRunner {
         for (SoftDrink sd : insertedSoftDrinks) {
             sd.setRating(0);
             softDrinkRepo.save(sd);
+        }
+
+        //updating pepsi to passion to have a rating of 5
+        for (SoftDrink sd2 : insertedSoftDrinks2) {
+            sd2.setRating(5);
+            softDrinkRepo.save(sd2);
         }
 
         System.out.println("ALL SOFT DRINKS IN DESCENDING ORDER BASED ON ID");
@@ -54,7 +68,7 @@ public class JpaRepoDemo implements CommandLineRunner {
                 )
                 .forEach(System.out::println);
 
-        //create page request to paginate through these 3 soft drinks. note that the first page is indicated using a 0
+        //create page request to paginate through these soft drinks. note that the first page is indicated using a 0
         PageRequest pageRequest = PageRequest.of(0, 2);
 
         System.out.println("FIRST PAGE");
@@ -67,7 +81,7 @@ public class JpaRepoDemo implements CommandLineRunner {
         page = softDrinkRepo.findAll(pageRequest.next());
         page.getContent().forEach(System.out::println);
 
-        //delete all 3 soft drinks in a batch
+        //delete all soft drinks in a batch
         softDrinkRepo.deleteAllInBatch();
     }
 }
