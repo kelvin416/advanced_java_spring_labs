@@ -22,8 +22,9 @@ public class Computer {
 
     private Integer price;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private User users;
+    @ManyToOne
+    @JoinColumn(name = "users_id")
+    private User user;
 
     private Integer year;
 

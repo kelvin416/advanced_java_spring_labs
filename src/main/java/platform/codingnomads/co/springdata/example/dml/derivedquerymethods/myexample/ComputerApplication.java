@@ -27,8 +27,9 @@ public class ComputerApplication implements CommandLineRunner {
         final User joan = User.builder().name("Joan").age(30).build();
         final User ray = User.builder().name("Ray").age(24).build();
         final User troy = User.builder().name("Troy").age(45).build();
+        final User joy = User.builder().name("Joy").age(19).build();
 
-        final List<User> users = Arrays.asList(kelvin, joan, ray, troy);
+        final List<User> users = Arrays.asList(kelvin, joan, ray, troy, joy);
 
         //save all the users to an empty repo
         if (userRepo.findAll().isEmpty()){
@@ -36,28 +37,28 @@ public class ComputerApplication implements CommandLineRunner {
         }
 
         final List<Computer> computers = Arrays.asList(
-                Computer.builder().name("MacbookPro").price(1999).users(kelvin).year(2018).modern(false).build(),
-                Computer.builder().name("MacbookAir").price(999).users(joan).year(2023).modern(true).build(),
-                Computer.builder().name("HPPavilion").price(699).users(ray).year(2013).modern(false).build(),
-                Computer.builder().name("MacbookPro").price(2999).users(troy).year(2023).modern(true).build(),
-                Computer.builder().name("MiniMac").price(499).users(troy).year(2023).modern(true).build()
+                Computer.builder().name("MacbookPro").price(1999).user(kelvin).year(2018).modern(false).build(),
+                Computer.builder().name("MacbookAir").price(999).user(joan).year(2023).modern(true).build(),
+                Computer.builder().name("HPPavilion").price(699).user(ray).year(2013).modern(false).build(),
+                Computer.builder().name("MacbookPro").price(2999).user(troy).year(2023).modern(true).build(),
+                Computer.builder().name("MiniMac").price(499).user(joy).year(2023).modern(true).build()
         );
 
         //save the computers to an empty repo.
         if (computerRepo.findAll().isEmpty()){
             computerRepo.saveAll(computers);
         }
-//
-//        System.out.println("**********************findByName************************");
-//        final User userName = userRepo.findByName("Kelvin");
-//        System.out.println(userName);
+
+        System.out.println("**********************findByName************************");
+        final User userName = userRepo.findByName("Kelvin");
+        System.out.println(userName);
 
         System.out.println("**********************findByAgeGreaterThan************************");
         final List<User> ageGreaterThan = userRepo.findByAgeGreaterThan(26);
         ageGreaterThan.forEach(System.out::println);
 
         System.out.println("**********************findByNameAndYear************************");
-        final Computer nameAndYear = computerRepo.findByNameAndYear("HP-Pavilion", 2013);
+        final Computer nameAndYear = computerRepo.findByNameAndYear("HPPavilion", 2013);
         System.out.println(nameAndYear);
 
         System.out.println("**********************findByPriceLessThan************************");
@@ -75,24 +76,27 @@ public class ComputerApplication implements CommandLineRunner {
         System.out.println("**********************findByPriceAndYearGreaterThan************************");
         final List<Computer> priceAndYearGraterThan = computerRepo.findByPriceAndYearGreaterThan(1000, 2018);
         priceAndYearGraterThan.forEach(System.out::println);
+
         System.out.println("**********************findFirstByModernIsTrue************************");
         final Computer firstModern = computerRepo.findFirstByModernIsTrue();
         System.out.println(firstModern);
 
-        System.out.println("**********************findBottomByModernIsFalse************************");
-        final Computer bottomByModern = computerRepo.findBottomByModernIsFalse();
-        System.out.println(bottomByModern);
+        //review this code
+//        System.out.println("**********************findBottomByModernIsFalse************************");
+//        final Computer bottomByModern = computerRepo.findBottomByModernIsFalse();
+//        System.out.println(bottomByModern);
 
         System.out.println("**********************findByNameIgnoreCase************************");
         final List<Computer> nameIgnoreCase = computerRepo.findByNameIgnoreCase("macbookpro");
         nameIgnoreCase.forEach(System.out::println);
 
-        System.out.println("**********************findTop2ByYear************************");
-        final List<Computer> top2ByYear = computerRepo.findTop2ByYear(2019);
-        top2ByYear.forEach(System.out::println);
+        //review
+//        System.out.println("**********************findTop2ByYear************************");
+//        final List<Computer> top2ByYear = computerRepo.findTop2ByYear(2019);
+//        top2ByYear.forEach(System.out::println);
 
-        userRepo.deleteAll();
-        computerRepo.deleteAll();
+//        userRepo.deleteAll();
+//        computerRepo.deleteAll();
 
     }
 }
