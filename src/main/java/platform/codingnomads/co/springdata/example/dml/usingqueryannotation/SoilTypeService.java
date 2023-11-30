@@ -70,7 +70,8 @@ public class SoilTypeService {
         soilTypesPh.forEach(System.out::println);
 
         //Setting up a page request
-        Pageable pageRequest = PageRequest.of(0, 2, Sort.by(Sort.Order.asc("soilTypePh")));
+        //property is the name given to the instance variable in SoilType Entity
+        Pageable pageRequest = PageRequest.of(0, 2, Sort.by(Sort.Order.asc("ph")));
         Page<SoilType> page;
 
         do {
