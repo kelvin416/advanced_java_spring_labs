@@ -4,10 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,5 +17,20 @@ public class PrintEntity {
     private Long id;
 
     // write your methods here
+
+    @PrePersist
+    private void saveDataStructures(){
+        System.out.println("Save Some Data Structures");
+    }
+
+    @PostUpdate
+    private void getSomeJava(){
+        System.out.println("Get Some Java Projects Done..");
+    }
+
+    @PostLoad
+    private void loadGoLangProject(){
+        System.out.println("Load Go projects");
+    }
 
 }
