@@ -43,18 +43,19 @@ public interface SongMapper {
             "WHERE id = #{id};")
     void updateSong(Song song);
 
-    @Select("SELECT * " +
-            "FROM mybatis.songs" +
-            "WHERE album_name = #{param 1}" )
+    @Select("SELECT *" +
+            "FROM mybatis.songs " +
+            "WHERE album_name = #{param1};")
+    //don't forget to put a space when breaking the sql
     ArrayList<Song> getSongByAlbum (String albumName);
 
     @Select("SELECT *" +
-            "FROM mybatis.songs" +
-            "WHERE song_length < #{param1}")
+            "FROM mybatis.songs " +
+            "WHERE song_length < #{param1};")
     ArrayList<Song> getSongsWithLengthLessThan(int song_length);
 
     @Delete("DELETE FROM mybatis.songs WHERE id = #{param1};")
-    void deleteSongById(Long songId);
+    void deleteSongById(Long id);
 
     @Delete("DELETE FROM mybatis.songs " +
             "WHERE artist_name = #{artistName} AND album_name = #{albumName};")

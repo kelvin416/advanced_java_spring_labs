@@ -62,7 +62,7 @@ public class MyBatisDemoApplication {
             song6.setName("Girlfriend");
             song6.setAlbum_name("The Best Dam Thing");
             song6.setArtist_name("Avril Laving");
-            song6.setSong_length(337);
+            song6.setSong_length(237);
 
             Song song7 = new Song();
             song7.setName("Runaway");
@@ -78,42 +78,49 @@ public class MyBatisDemoApplication {
             songMapper.insertNewSong(song6);
             songMapper.insertNewSong(song7);
 
-            Song songNumber3 = songMapper.getSongById(1L);
-            System.out.println(songNumber3.toString());
+            Song songNumber1 = songMapper.getSongById(1L);
+            System.out.print("The song with id 1 is:");
+            System.out.println(songNumber1.toString());
 
             ArrayList<Song> longSongs = songMapper.getSongsWithLengthGreaterThan(250);
-
+            System.out.println("Songs with more than 2 mins 50 secs are: ");
             longSongs.forEach(System.out::println);
 
 
             //getSongsByName
             ArrayList<Song> songName = songMapper.getSongsByName("Runaway");
+            System.out.println("The song name is: ");
             songName.forEach(System.out::println);
 
             //getSongsByAlbumAndArtist
-            ArrayList<Song> songsByArtistAndName = songMapper.getSongsByAlbumAndArtist("Avril Laving", "Runaway");
+            ArrayList<Song> songsByArtistAndName = songMapper.getSongsByAlbumAndArtist("Avril Laving", "The Best Dam Thing");
+            System.out.println("Songs by Avril Laving in the album of the best dam thing:");
             songsByArtistAndName.forEach(System.out::println);
 
             //getSongsByArtist
             ArrayList<Song> songsByArtist = songMapper.getSongsByArtist("Kesha");
+            System.out.println("Songs By Artist Kesha:");
             songsByArtist.forEach(System.out::println);
 
             //updateSong
-//            Song songUpdate = songMapper.updateSong("Roar", "Katty Perry", "Prisim", 343, 34L);
+//            Song songUpdate = songMapper.updateSong();
 
             //getSongByAlbum
-//            ArrayList<Song> songsByAlbum = songMapper.getSongByAlbum("The Best Dam Thing");
-//            songsByAlbum.forEach(System.out::println);
+            ArrayList<Song> songsByAlbum = songMapper.getSongByAlbum("Orca");
+            System.out.println("Songs in the album of Orca:");
+            songsByAlbum.forEach(System.out::println);
+
             //getSongsWithLengthLessThan
             ArrayList<Song> shortSongs = songMapper.getSongsWithLengthLessThan(310);
+            System.out.println("Songs with length less than 3 mins 10 seconds: ");
             shortSongs.forEach(System.out::println);
 
             //deleteSongById
-//            Song deleteSongById = songMapper.deleteSongById();
+//            Song deleteSongById = songMapper.deleteSongById(3L);
 
             //deleteSongsByAlbumAndArtist
 
-//            Song deleteSongByAlbumAndArtist = songMapper.deleteSongsByAlbumAndArtist("Kesha", "Animal");
+//            ArrayList<Song> deleteSongByAlbumAndArtist = songMapper.deleteSongsByAlbumAndArtist("Kesha", "Animal");
         };
     }
 }
