@@ -30,6 +30,31 @@ public class GetForObjectDemo {
             System.out.println(Arrays.toString(randomQuote));
 
             // submit more requests here
+
+            //random excuse
+            ExcuseTemplate [] randomExcuse;
+            randomExcuse = restTemplate.getForObject("https://excuser-three.vercel.app/v1/excuse", ExcuseTemplate[].class);
+            System.out.println(Arrays.toString(randomExcuse));
+
+            //specific excuse with id
+//            ExcuseTemplate [] specificExcuse;
+//            specificExcuse = restTemplate.getForObject("https://excuser-three.vercel.app/v1/excuse/id/101", ExcuseTemplate[].class);
+//            System.out.println(Arrays.toString(specificExcuse));
+
+            //random n excuses
+            ExcuseTemplate [] randomExcuses;
+            randomExcuses = restTemplate.getForObject("https://excuser-three.vercel.app/v1/excuse/5", ExcuseTemplate[].class);
+            System.out.println(Arrays.toString(randomExcuses));
+
+            //random excuse for specific category
+            ExcuseTemplate [] excuseByCategory;
+            excuseByCategory = restTemplate.getForObject("https://excuser-three.vercel.app/v1/excuse/gaming", ExcuseTemplate[].class);
+            System.out.println(Arrays.toString(excuseByCategory));
+
+            //n random excuses for category
+            ExcuseTemplate [] excusesByCategory;
+            excusesByCategory = restTemplate.getForObject("https://excuser-three.vercel.app/v1/excuse/party/2", ExcuseTemplate[].class);
+            System.out.println(Arrays.toString(excusesByCategory));
             
 //            CodingNomadsTasksApiResponse response =
 //                    restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users/5",

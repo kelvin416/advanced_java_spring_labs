@@ -28,11 +28,60 @@ public class ResultsDemoApplication {
             song2.setArtistName("Gus Dapperton");
             song2.setSongLength(279);
 
+            Song song3 = new Song();
+            song3.setName("Better Than Ever");
+            song3.setAlbumName("A Side of Me");
+            song3.setArtistName("Nikita Kering");
+            song3.setSongLength(168);
+
+            Song song4 = new Song();
+            song3.setName("Never Let Me Go");
+            song3.setAlbumName("A Side of Me");
+            song3.setArtistName("Nikita Kering");
+            song3.setSongLength(170);
+
+            Song song5 = new Song();
+            song3.setName("Ex");
+            song3.setAlbumName("A Side of Me");
+            song3.setArtistName("Nikita Kering");
+            song3.setSongLength(249);
+
+            Song song6 = new Song();
+            song3.setName("Fly");
+            song3.setAlbumName("Pink Friday");
+            song3.setArtistName("Nicki Minaj");
+            song3.setSongLength(320);
+
+            Song song7 = new Song();
+            song3.setName("Moment 4 Life");
+            song3.setAlbumName("Pink Friday");
+            song3.setArtistName("Nicki Minaj");
+            song3.setSongLength(400);
+
+            Song song8 = new Song();
+            song3.setName("Right Through Me");
+            song3.setAlbumName("Pink Friday");
+            song3.setArtistName("Nicki Minaj");
+            song3.setSongLength(220);
+
+            Song song9 = new Song();
+            song3.setName("Save Me");
+            song3.setAlbumName("Pink Friday");
+            song3.setArtistName("Nicki Minaj");
+            song3.setSongLength(220);
+
             songMapper.insertNewSong(song1);
             songMapper.insertNewSong(song2);
+            songMapper.insertNewSong(song3);
+            songMapper.insertNewSong(song4);
+            songMapper.insertNewSong(song5);
+            songMapper.insertNewSong(song6);
+            songMapper.insertNewSong(song7);
+            songMapper.insertNewSong(song8);
+            songMapper.insertNewSong(song9);
 
-            Song song3 = songMapper.getSongById(1L);
-            System.out.println(song3.toString());
+            Song getSongId = songMapper.getSongById(1L);
+            System.out.println(getSongId.toString());
         };
     }
 }
